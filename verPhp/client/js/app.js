@@ -38,7 +38,7 @@ class EventsManager {
         		center: 'title',
         		right: 'month,agendaWeek,basicDay'
         	},
-        	defaultDate: '2016-11-01',
+        	defaultDate: '2018-12-01',
         	navLinks: true,
         	editable: true,
         	eventLimit: true,
@@ -140,7 +140,7 @@ class EventsManager {
           if (data.msg=="OK") {
             alert('Se ha eliminado el evento exitosamente')
           }else {
-            alert(data.msg)
+            alert(data.msg +" "+ data.condicion)
           }
         },
         error: function(){
