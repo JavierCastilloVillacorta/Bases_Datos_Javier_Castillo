@@ -1,4 +1,3 @@
-
 class EventManager {
     constructor() {
         this.urlBase = "/events"
@@ -10,14 +9,24 @@ class EventManager {
     obtenerDataInicial() {
         let url = this.urlBase + "/all"
         $.get(url, (response) => {
+          if (response == "Error") {
+            alert(response)
+            window.location.href = "http://localhost:3000/index.html";
+          }else{
             this.inicializarCalendario(response)
+          }
+
         })
     }
 
     eliminarEvento(evento) {
         let eventId = evento.id
         $.post('/events/delete/'+eventId, {id: eventId}, (response) => {
-            alert(response)
+          if(response == "Error"){
+            window.location.href = "http://localhost:3000/index.html";
+          } else {
+            alert(response);
+          }
         })
     }
 
@@ -45,8 +54,18 @@ class EventManager {
                     start: start,
                     end: end
                 }
+
                 $.post(url, ev, (response) => {
-                    alert(response)
+                  if (response.msg) {
+                    alert(response.msg);
+                    ev.id = response.idEvento;
+                  }else{
+                    if(response == "Error"){
+                      window.location.href = "http://localhost:3000/index.html";
+                    } else {
+                      alert(response);
+                    }
+                  }
                 })
                 $('.calendario').fullCalendar('renderEvent', ev)
             } else {
@@ -54,6 +73,42 @@ class EventManager {
             }
         })
     }
+
+    actualizarEvento(evento){
+      let inicio = moment(evento.start).format();
+      let ev;
+      if(evento.end){
+        //Evento NO es de día completo
+        let fin = moment(evento.end).format();
+        ev = {
+          id:evento.id,
+          title:evento.title,
+          start:inicio,
+          end:fin
+        }
+      } else {
+        //Evento es de día completo
+        ev = {
+          id:evento.id,
+          title:evento.title,
+          start:inicio
+        }
+      }
+
+      //Enviamos el post
+      $.post("/events/update", ev, (resultado)=>{
+        if(resultado.msg){
+          alert(resultado.msg);
+        } else {
+          if(resultado == "Error"){
+            window.location.href = "http://localhost:3000/index.html";
+          } else {
+            alert(resultado);
+          }
+        }
+      });
+    }
+
 
     inicializarFormulario() {
         $('#start_date, #titulo, #end_date').val('');
@@ -87,7 +142,7 @@ class EventManager {
                 center: 'title',
                 right: 'month,agendaWeek,basicDay'
             },
-            defaultDate: '2016-11-01',
+            defaultDate: '2018-12-01',
             navLinks: true,
             editable: true,
             eventLimit: true,

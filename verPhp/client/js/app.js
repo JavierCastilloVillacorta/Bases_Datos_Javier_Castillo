@@ -97,12 +97,14 @@ class EventsManager {
             alert('Se ha añadido el evento exitosamente')
             if (document.getElementById('allDay').checked) {
               $('.calendario').fullCalendar('renderEvent', {
+                id: data.idEvento,
                 title: $('#titulo').val(),
                 start: $('#start_date').val(),
                 allDay: true
               })
             }else {
               $('.calendario').fullCalendar('renderEvent', {
+                id: data.idEvento,
                 title: $('#titulo').val(),
                 start: $('#start_date').val()+" "+$('#start_hour').val(),
                 allDay: false,

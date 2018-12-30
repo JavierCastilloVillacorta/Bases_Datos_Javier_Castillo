@@ -4,8 +4,7 @@
   if ($conexion->connect_error) {
     echo "Error:" . $conexion->connect_error;
   }else {
-    // Descomentar para entrega de examen 
-    //$sql = "INSERT INTO usuarios(nombre, email, password) VALUES (?,?,?)";
+    $sql = "INSERT INTO usuarios(nombre, email, password) VALUES (?,?,?)";
     $insert = $conexion->prepare($sql);
     $insert->bind_param("sss",$nombre,$email,$password);
 

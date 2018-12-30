@@ -6,7 +6,7 @@
     private $db_user = "root";
     private $db_password = "";
     private $db_name = "agenda";
-    private $conexion;
+    public $conexion;
 
     function initConexion(){
       $this->conexion = new mysqli($this->db_host, $this->db_user, $this->db_password, $this->db_name);
