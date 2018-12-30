@@ -59,6 +59,7 @@ class EventManager {
                   if (response.msg) {
                     alert(response.msg);
                     ev.id = response.idEvento;
+                    $('.calendario').fullCalendar('renderEvent', ev)
                   }else{
                     if(response == "Error"){
                       window.location.href = "http://localhost:3000/index.html";
@@ -67,7 +68,7 @@ class EventManager {
                     }
                   }
                 })
-                $('.calendario').fullCalendar('renderEvent', ev)
+
             } else {
                 alert("Complete los campos obligatorios para el evento")
             }

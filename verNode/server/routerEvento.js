@@ -17,14 +17,20 @@ Router.get('/events/all', function(req, res){
       res.status = 500;
       res.send("Error al obtener data");
     }else{
+
       let eventos =[];
       for (var i = 0; i < resultado.length; i++) {
-        let evento ={
-          id:resultado[i].id,
-          title:resultado[i].titulo,
-          start:resultado[i].inicio,
-          end:resultado[i].fin
-        };
+        resultado[i].inicio = resultado[i].inicio.replace(/ /g, "");
+        resultado[i].inicio = resultado[i].inicio.replace(/ /g, "");
+
+          let evento ={
+            id:resultado[i].id,
+            title:resultado[i].titulo,
+            start:resultado[i].inicio,
+            end:resultado[i].fin
+          };
+
+
         eventos[i] = evento;
       }
       res.json(eventos);
@@ -42,6 +48,7 @@ Router.post('/events/new', function(req, res){
       res.send('Error');
       return;
     }
+
 
     let nEvento = new Eventos({
       id: idEvento,

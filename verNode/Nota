@@ -1,0 +1,11 @@
+Dependencias usadas :
+    "body-parse": "^0.1.0",
+    "express": "^4.16.4",
+    "express-session": "^1.15.6",
+    "mongoose": "^5.4.1"
+
+Modelo realizado con mongoose ubicado en modelo/modelo.js
+Los usuarios se crean al ejecutar el proyecto con node server 
+ubicados en server/nuevo_usuarios.js
+Usuario1 = usuario : juan@gmail.com - password : 123456
+Usuario2 = usuario : carlos@gmail.com - password : 123456

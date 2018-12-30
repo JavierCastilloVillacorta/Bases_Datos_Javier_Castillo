@@ -1,0 +1,14 @@
+Nombre base de datos : agenda 
+usuarios : 
+
+    usuario1 = "juan@gmail.com"
+    password = "123456"
+
+
+    usuario2 = "carlos@gmail.com"
+    password = "123456"
+
+
+    usuario3 = "pedro@gmail.com"
+    password = "123456"
+

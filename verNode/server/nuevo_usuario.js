@@ -13,12 +13,12 @@ module.exports.insertarRegistro = function(callback){
 
         Usuario1.save((error)=>{
           if(error)callback(error)
-          callback(null,"Registro Guardado")
+          callback(null,"Registro Guardado: usuario: juan@gmail.com - password: 123456")
         })
         let Usuario2 = new Usuarios({nombre : 'Carlos', email : 'carlos@gmail.com', password : '123456'});
         Usuario2.save((error)=>{
           if(error)callback(error)
-          callback(null,"Registro Guardado")
+          callback(null,"Registro Guardado:  usuario:carlos@gmail.com - password: 123456 ")
         })
       }else {
         callback(null, result)
